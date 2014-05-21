@@ -54,11 +54,22 @@ push_to_heroku() {
 }
 
 create_and_move_to_branch() {
-    echo "TODO create and move to branch"
+    #check to see if we're on the master branch
+    on_master_regex="\* master"
+    if [[ $(git branch) =~ $on_master_regex ]] ; then
+        git checkout -b $message_or_branch_name
+    else
+        echo "This script only branches from master for now"
+        exit 1
+    fi
 }
 
-merge_from_branch() {
-    echo "TODO merge from branch"
+merge_from_branch_to_master() {
+    echo "merge from branch is under construction"
+    git branch | sed 's/^\* \(\)$/\1/'
+    #get name of current branch
+    #exit with error if the current branch is master
+    #move to master branch and merge non-master branch
 }
 
 get_command "$@"
@@ -72,7 +83,7 @@ case "$selection" in
     ;;
 -b) create_and_move_to_branch
     ;;
--m) merge_from_branch
+-m) merge_from_branch_to_master
     ;;
 *) usage_message; exit 1
    ;;
