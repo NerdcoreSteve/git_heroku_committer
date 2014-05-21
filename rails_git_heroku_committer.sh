@@ -43,7 +43,9 @@ usage_message() {
 }
 
 commit_branch() {
-    echo "TODO commit branch"
+    git add .
+    git commit -m "$message_or_branch_name"
+    git push
 }
 
 push_to_heroku() {
