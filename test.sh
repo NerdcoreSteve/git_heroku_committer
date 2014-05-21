@@ -1,21 +1,21 @@
 #!/bin/bash
 
 ./rails_git_heroku_committer.sh
+echo
+echo
 
-./rails_git_heroku_committer.sh -c
 ./rails_git_heroku_committer.sh -h
-./rails_git_heroku_committer.sh -hc
-./rails_git_heroku_committer.sh -ch
-./rails_git_heroku_committer.sh -h -c
-./rails_git_heroku_committer.sh -c -h
-./rails_git_heroku_committer.sh -b
+echo
 ./rails_git_heroku_committer.sh -m
-
+echo
 ./rails_git_heroku_committer.sh -c "commit message"
-./rails_git_heroku_committer.sh -h "commit message"
-./rails_git_heroku_committer.sh -hc "commit message"
+echo
+./rails_git_heroku_committer.sh -b "branch name"
+echo
 ./rails_git_heroku_committer.sh -ch "commit message"
-./rails_git_heroku_committer.sh -h -c "commit message"
+echo
+./rails_git_heroku_committer.sh -hc "commit message"
+echo
 ./rails_git_heroku_committer.sh -c -h "commit message"
-./rails_git_heroku_committer.sh -b "commit message"
-./rails_git_heroku_committer.sh -m "commit message"
+echo
+./rails_git_heroku_committer.sh -h -c "commit message"
