@@ -46,6 +46,7 @@ commit_branch() {
     git add .
     git commit -m "$message_or_branch_name"
     git push
+    git status
 }
 
 push_to_heroku() {
