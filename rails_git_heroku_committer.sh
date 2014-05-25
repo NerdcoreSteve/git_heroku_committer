@@ -18,10 +18,10 @@ usage_message() {
     echo
     echo "-m for, while not in master branch, merging branch to master and moving to master."
     echo
-    echo "-cm for commiting current branch to github and merging to master."
+    echo "-cm for commiting current branch to github, merging to master, and pusing to github."
     echo "Requires commit message."
     echo
-    echo "-cmh for commiting current branch to github, merging to master,"
+    echo "-cmh for commiting current branch to github, merging to master, pushing to gitub"
     echo "and then pushing those changes to heroku"
     echo "Requires commit message."
 }
@@ -57,6 +57,7 @@ merge_from_branch_to_master() {
         echo "This script is only for merging from a non-master branch"
         exit 1
     fi
+    git push
 }
 
 echo "$command $branch_name_or_commit_message"
