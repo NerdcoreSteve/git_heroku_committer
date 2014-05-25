@@ -6,7 +6,7 @@ branch_name_or_commit_message=$2
 usage_message() {
     echo "rails_git_heroku_committer usage:"
     echo
-    echo "-c for commiting current branch to github. Requires commit message."
+    echo "-c for commiting and pushing current branch to github. Requires commit message."
     echo
     echo "-h for pushing committed changes to heroku."
     echo
