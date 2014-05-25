@@ -5,18 +5,26 @@ message_or_branch_name="none"
 
 get_command() {
     if [ "$#" -eq 1 ] ; then
-        flag_regex="^-(h|m)$"
+        flag_regex="^-(h|m|mc|cm)$"
         if [[ $1 =~ $flag_regex ]] ; then
             selection=$1
+            if [ $1 = "-mc" ] ; then
+                selection="-cm"
+            fi
         fi
     elif [ "$#" -eq 2 ] ; then
-        flag_regex="^-(c|b|ch|hc)$"
+        flag_regex="^-(m|c|b|ch|hc)$"
         if [[ $1 =~ $flag_regex ]] ; then
             selection=$1
-            if [ $1 = "-hc" ] ; then
+            if [[ ($1 = "-c" && $2 = "-m") || ($1 = "-m" && $2 = "-c") ]] ; then
+                selection="-cm"
+            elif [ $1 = "-hc" ] ; then
                 selection="-ch"
+                message_or_branch_name=$2
+            else
+                selection=$1
+                message_or_branch_name=$2
             fi
-            message_or_branch_name=$2
         fi
     elif [ "$#" -eq 3 ] ; then
         if [[ ($1 = "-c" && $2 = "-h") || ($1 = "-h" && $2 = "-c") ]] ; then
@@ -76,6 +84,10 @@ merge_from_branch_to_master() {
     fi
 }
 
+commit_then_merge_from_branch_to_master() {
+    echo "TODO commit_then_merge_from_branch_to_master"
+}
+
 get_command "$@"
 
 case "$selection" in
@@ -88,6 +100,8 @@ case "$selection" in
 -b) create_and_move_to_branch
     ;;
 -m) merge_from_branch_to_master
+    ;;
+-cm) commit_then_merge_from_branch_to_master
     ;;
 *) usage_message; exit 1
    ;;
