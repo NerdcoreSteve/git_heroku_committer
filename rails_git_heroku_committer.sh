@@ -66,10 +66,14 @@ create_and_move_to_branch() {
 
 merge_from_branch_to_master() {
     echo "merge from branch is under construction"
-    git branch | sed 's/^\* \(\)$/\1/'
-    #get name of current branch
-    #exit with error if the current branch is master
-    #move to master branch and merge non-master branch
+    branch_name=$(git branch | sed -rn 's/\* ([a-z]+)/\1/p')
+    if [[ "$branch_name" != "master" ]] ; then
+        git checkout master
+        git merge $branch_name
+    else
+        echo "This script is only for merging from a non-master branch"
+        exit 1
+    fi
 }
 
 get_command "$@"
