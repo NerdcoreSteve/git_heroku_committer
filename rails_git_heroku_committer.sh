@@ -84,10 +84,6 @@ merge_from_branch_to_master() {
     fi
 }
 
-commit_then_merge_from_branch_to_master() {
-    echo "TODO commit_then_merge_from_branch_to_master"
-}
-
 get_command "$@"
 
 case "$selection" in
@@ -101,7 +97,7 @@ case "$selection" in
     ;;
 -m) merge_from_branch_to_master
     ;;
--cm) commit_then_merge_from_branch_to_master
+-cm) commit_branch; merge_from_branch_to_master
     ;;
 *) usage_message; exit 1
    ;;
