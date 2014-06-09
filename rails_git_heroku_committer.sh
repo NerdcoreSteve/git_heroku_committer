@@ -42,6 +42,7 @@ create_and_move_to_branch() {
     on_master_regex="\* master"
     if [[ $(git branch) =~ $on_master_regex ]] ; then
         git checkout -b $branch_name_or_commit_message
+        git push -u origin $branch_name_or_commit_message
     else
         echo "This script only branches from master for now"
         exit 1
