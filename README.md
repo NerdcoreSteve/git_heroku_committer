@@ -1,4 +1,4 @@
-rails_git_heroku_committer
+git_heroku_committer
 ==========================
 
-A bash script to make it easy to do common commit/push tasks for when you're using github and heroku for your git projects and git projects that are hosted on heroku.
+A bash script to make it easy to do common commit/push tasks in git as well as pushing changes to heroku projects.
