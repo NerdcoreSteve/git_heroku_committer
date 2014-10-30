@@ -82,4 +82,6 @@ case "$command" in
    ;;
 esac
 
+clear
+ls
 git status
